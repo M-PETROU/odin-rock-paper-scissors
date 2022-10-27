@@ -1,0 +1,81 @@
+<script>
+    let playerSelection = prompt("enter a choice", "").toLowerCase();
+    let computerChoice;
+    let playerScore = 0;
+    let computerScore = 0;
+    getComputerChoice();
+    playRound(playerSelection, computerChoice);
+    console.log("player score is: " + playerScore);
+    console.log("computer score is: " + computerScore);
+
+    while (playerSelection != "rock" && playerSelection != "scissors" && playerSelection != "paper") {
+        playerSelection = prompt("enter a choice", "").toLowerCase();
+        console.log(playerSelection);
+    }
+
+    function getComputerChoice() {
+        computerChoice = Math.floor(Math.random() * 3);
+        if (computerChoice === 0) {
+            computerChoice = "rock";
+        } else if (computerChoice === 1) {
+            computerChoice = "paper";
+        } else {
+            computerChoice = "scissors";
+        }
+        return computerChoice;
+    }
+
+    function playRound(playerSelection, computerChoice) {
+        if (playerSelection == "rock") {
+            if (computerChoice == "scissors") {
+                console.log("u win");
+                playerScore++;
+            }
+            else if (computerChoice == "paper") {
+                console.log("u lose");
+                computerScore++;
+            }
+            else if (computerChoice == "rock") {
+                console.log("tie");
+                playerScore++;
+                computerScore++;
+            }
+        }
+        else if (playerSelection == "scissors") {
+            if (computerChoice == "paper") {
+                console.log("u win");
+                playerScore++;
+            }
+            else if (computerChoice == "rock") {
+                console.log("u lose");
+                computerScore++;
+            }
+            else if (computerChoice == "scissors") {
+                console.log("tie");
+                playerScore++;
+                computerScore++;
+            }
+        }
+        else if (playerSelection == "paper") {
+            if (computerChoice == "rock") {
+                console.log("u win");
+                playerScore++;
+            }
+            else if (computerChoice == "scissors") {
+                console.log("u lose");
+                computerScore++;
+            }
+            else if (computerChoice == "paper") {
+                console.log("u win");
+                playerScore++;
+                computerScore++;
+            }
+        }
+
+
+    }
+
+
+
+
+</script>
