@@ -1,8 +1,10 @@
-<button class="rock">rock</button>
-<button class="paper">paper</button>
-<button class="scissors">scissors</button>
+<body>
+    <button class="rock">rock</button>
+    <button class="paper">paper</button>
+    <button class="scissors">scissors</button>
 
-<div id="cscoreContainer"></div>
+    <div id="scoreContainer"></div>
+</body>
 
 <script>
     let playerSelection;
@@ -11,7 +13,8 @@
     let computerScore = 0;
     const scoreContainer = document.querySelector('#scoreContainer')
     const score = document.createElement('div');
-    
+    const scoreBoard = document.createElement('div');
+
 
 
     const rock = document.querySelector('.rock');
@@ -61,44 +64,58 @@
                 computerScore++;
             }
             else if (computerChoice == "rock") {
-                score.textContent ="tie";
+                score.textContent = "tie";
                 scoreContainer.appendChild(score);
             }
         }
         else if (playerSelection == "scissors") {
             if (computerChoice == "paper") {
-                console.log("u win");
+                score.textContent = "u win";
+                scoreContainer.appendChild(score);
                 playerScore++;
             }
             else if (computerChoice == "rock") {
-                console.log("u lose");
+                score.textContent = "u lose";
+                scoreContainer.appendChild(score);
                 computerScore++;
             }
             else if (computerChoice == "scissors") {
-                console.log("tie");
+                score.textContent = "tie";
+                scoreContainer.appendChild(score);
             }
         }
         else if (playerSelection == "paper") {
             if (computerChoice == "rock") {
-                console.log("u win");
+                score.textContent = "u win";
+                scoreContainer.appendChild(score);
                 playerScore++;
             }
             else if (computerChoice == "scissors") {
-                console.log("u lose");
+                score.textContent = "u lose";
+                scoreContainer.appendChild(score);
                 computerScore++;
             }
             else if (computerChoice == "paper") {
-                console.log("tie");
+                score.textContent = "tie";
+                scoreContainer.appendChild(score);
             }
         }
-        console.log('player score is: ' + playerScore +
-            ' and computer score is: ' + computerScore);
+        scoreBoard.textContent = 'player score is: ' + playerScore +
+            ' and computer score is: ' + computerScore;
+            scoreContainer.appendChild(scoreBoard);
 
         if (playerScore == 5) {
-            console.log("u big winner");
+            score.textContent = 'u big winer'
+            scoreBoard.textContent = 'player score was: ' + playerScore +
+            ' and computer score was: ' + computerScore;
+            scoreContainer.appendChild(scoreBoard);
+        
         }
         else if (computerScore == 5) {
-            console.log("u loser idiot");
+            score.textContent = 'u loser idiot';
+            scoreBoard.textContent = 'player score was: ' + playerScore +
+            ' and computer score was: ' + computerScore;
+            scoreContainer.appendChild(scoreBoard);
         }
     }
 
