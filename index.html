@@ -1,42 +1,68 @@
+<button class="rock">rock</button>
+<button class="paper">paper</button>
+<button class="scissors">scissors</button>
+
+<div id="cscoreContainer"></div>
+
 <script>
     let playerSelection;
     let computerChoice;
     let playerScore = 0;
     let computerScore = 0;
-     play5(playerSelection, computerChoice);
+    const scoreContainer = document.querySelector('#scoreContainer')
+    const score = document.createElement('div');
+    
 
 
-    function verifyPlayerSelection(playerSelection) {
-        while (playerSelection != "rock" && playerSelection != "scissors" && playerSelection != "paper") {
-            playerSelection = prompt("enter a choice", "").toLowerCase();
-            console.log(playerSelection);
-        }
-    }
+    const rock = document.querySelector('.rock');
+    rock.addEventListener('click', () => {
+        playerSelection = 'rock';
+        console.log(playerSelection);
+        getComputerChoice();
+        playRound(playerSelection, computerChoice);
+    });
+    const paper = document.querySelector('.paper');
+    paper.addEventListener('click', () => {
+        playerSelection = 'paper';
+        console.log(playerSelection);
+        getComputerChoice();
+        playRound(playerSelection, computerChoice);
+    });
+    const scissors = document.querySelector('.scissors');
+    scissors.addEventListener('click', () => {
+        playerSelection = 'scissors';
+        console.log(playerSelection);
+        getComputerChoice();
+        playRound(playerSelection, computerChoice);
+    });
 
     function getComputerChoice() {
         computerChoice = Math.floor(Math.random() * 3);
         if (computerChoice === 0) {
-            return "rock";
+            computerChoice = "rock";
         } else if (computerChoice === 1) {
-            return "paper";
+            computerChoice = "paper";
         } else {
-            return "scissors";
+            computerChoice = "scissors";
         }
-       
+
     }
 
     function playRound(playerSelection, computerChoice) {
         if (playerSelection == "rock") {
             if (computerChoice == "scissors") {
-                console.log("u win");
+                score.textContent = "u win";
+                scoreContainer.appendChild(score);
                 playerScore++;
             }
             else if (computerChoice == "paper") {
-                console.log("u lose");
+                score.textContent = "u lose";
+                scoreContainer.appendChild(score);
                 computerScore++;
             }
             else if (computerChoice == "rock") {
-                console.log("tie");
+                score.textContent ="tie";
+                scoreContainer.appendChild(score);
             }
         }
         else if (playerSelection == "scissors") {
@@ -65,24 +91,47 @@
                 console.log("tie");
             }
         }
+        console.log('player score is: ' + playerScore +
+            ' and computer score is: ' + computerScore);
 
-
-    }
-
-    function play5(playerSelection, computerChoice) {
-        while (playerScore < 5 && computerScore < 5) {
-            playerSelection = prompt("enter a choice", "").toLowerCase();
-            verifyPlayerSelection(playerSelection);
-            computerChoice = getComputerChoice();
-            playRound(playerSelection, computerChoice);
-            console.log("player score is: " + playerScore);
-            console.log("computer score is: " + computerScore);
-        }
         if (playerScore == 5) {
             console.log("u big winner");
         }
-        else if (computerScore == 5)
+        else if (computerScore == 5) {
             console.log("u loser idiot");
+        }
     }
 
+
+
+    /*
+    const people = ['Chris', 'Anne', 'Colin', 'Terri', 'Phil', 'Lola', 'Sam', 'Kay', 'Bruce'];
+    
+    const admitted = document.querySelector('.admitted');
+    const refused = document.querySelector('.refused');
+    admitted.textContent = 'Admit: ';
+    refused.textContent = 'Refuse: ';
+    
+    for (let i = 0; i < people.length; i++){
+        if (people[i] == 'Lola' || people[i] == 'Phil'){
+            refused.textContent += people[i];
+        }
+        else{
+            admitted.textContent += people[i];
+        }
+    */
+
+    /*
+    for (let i = 2; i <= n; i++){
+        if (n !== i && n % i == 0){
+            console.log ("not a prime");
+            break;
+        }
+        else {
+            continue;
+        }
+        console.log("is prime");
+    }
+    
+    */
 </script>
